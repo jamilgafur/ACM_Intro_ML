@@ -97,11 +97,11 @@ def test_adversarial(model, test_loader, epsilon):
 def visualize_examples(examples, epsilon):
     fig, axes = plt.subplots(len(examples), 2, figsize=(6, 10))
     for i, (orig, adv, label, pred) in enumerate(examples):
-        axes[i, 0].imshow(orig, cmap="gray")
+        axes[i, 0].imshow(orig.detach().numpy(), cmap="gray")
         axes[i, 0].set_title(f"Original: {label}")
         axes[i, 0].axis("off")
 
-        axes[i, 1].imshow(adv, cmap="gray")
+        axes[i, 1].imshow(adv.detach().numpy(), cmap="gray")
         axes[i, 1].set_title(f"Adversarial: {pred}")
         axes[i, 1].axis("off")
 
